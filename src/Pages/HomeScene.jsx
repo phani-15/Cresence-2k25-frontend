@@ -1,6 +1,6 @@
 import React from "react";
-import Navbar from "./Navbar";
-import EntryScene from "./EntryScene";
+import Navbar from "../Components/Navbar";
+import EntryScene from "../Components/EntryScene";
 
 export default function HomeScene() {
   return (
