@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 const AnimatedNavLink = ({ to, children }) => (
 	<NavLink to={to}>
 		{({ isActive }) => (
-			<div className="relative group transition-all duration-300 px-2 py-1 text-black hover:text-gray-300 pointer-events-auto">
+			<div className="relative group transition-all duration-300 px-2 py-1 text-white hover:text-gray-300 pointer-events-auto">
 				<span className="pointer-events-auto">{children}</span>
 				<span
 					className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#8000FF] transform transition-transform duration-300 origin-left pointer-events-auto 
@@ -66,7 +66,7 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className={`md:fixed top-0 left-0 w-full text-black transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+			className={`md:fixed top-0 left-0 w-full text-white z-50 transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
 				}`}
 		>
 			<div className="w-full hidden md:flex justify-center lg:h-20 font-medium">

@@ -9,8 +9,9 @@
   width: 100%;
 }
 
-.bg-castle{
-  background-image: url('/images/castle.png');
+.night-bg {
+  background-image: url('/images/background.png');
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }

@@ -16,7 +16,7 @@ function TextModel() {
   scene.traverse((child) => {
     if (child.isMesh) {
       child.material = new THREE.MeshStandardMaterial({
-        color: "#220000",
+        color: "#AFAFAF",
         roughness: 0.6,
         metalness: 0.1,
       });
