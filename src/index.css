@@ -8,6 +8,11 @@
   height: 100vh;
   width: 100%;
 }
+.night-bg {
+  position: relative;
+  height: 100vh;        /* or desired height */
+  overflow: hidden;     /* 🔴 THIS STOPS SCROLL */
+}
 
 .bg-castle {
   background-image: url('/images/castle.png');
@@ -20,4 +25,53 @@
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: 70%;
+}
+.night-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url('/images/background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  filter: blur(2px);
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+.night-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+.event-bg {
+  background-image: url('/images/events-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.workshop-bg {
+  background-image: url('/images/workshops-bg.jpg');
+  background-size: 100% 100%; /* Forces the background to match the div dimensions exactly */
+  background-repeat: no-repeat;
+  width: 350px; /* Adjust based on your preferred card size */
+  height: 500px; /* Adjust to match your background image aspect ratio */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }

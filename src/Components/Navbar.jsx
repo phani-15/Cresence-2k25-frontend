@@ -13,7 +13,7 @@ const AnimatedNavLink = ({ to, children }) => (
 				></span>
 				<span
 					className={`absolute -bottom-0.5 left-0 w-full h-0.5  opacity-0 group-hover:opacity-100 transform transition-all duration-300 origin-left pointer-events-none 
-              ${isActive ? "scale-x-100 opacity-100" : "scale-x-0"} blur-sm`}
+              ${isActive ? "scale-x-100 opacity-100" : "scale-x-0"} `}
 				></span>
 			</div>
 		)}
@@ -66,13 +66,12 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className={`md:fixed top-0 left-0 w-full text-black transition-transform duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+			className={`md:fixed top-0 left-0 w-full text-black transition-transform bg-transparent duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
 				}`}
 		>
-			<div className="w-full hidden md:flex justify-center lg:h-20 font-medium">
+			<div className="w-full hidden md:flex justify-center lg:h-20 font-medium ">
 				<div className="flex justify-center">
-					{/* Left container with skewed border */}
-					<div className="skewed-container-l   px-3 flex items-center">
+					<div className="px-3 flex items-center">
 						<div className="flex items-center justify-evenly md:w-28 lg:w-52 xl:w-[20rem] md:text-xs lg:text-base inner-content-l py-3">
 							<AnimatedNavLink to="/events">
 								Events
@@ -104,9 +103,7 @@ const Navbar = () => {
 							</div>
 						</div>
 					</div>
-
-					{/* Right container with skewed border */}
-					<div className="skewed-container-r px-3 flex items-center">
+					<div className="px-3 flex items-center">
 						<div className="flex items-center justify-evenly md:w-28 lg:w-52 xl:w-[20rem] md:text-xs lg:text-base inner-content-r py-3">
 							<AnimatedNavLink to="/timeline">
 								Timeline
