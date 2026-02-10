@@ -8,46 +8,57 @@
   height: 100vh;
   width: 100%;
 }
+
 .night-bg {
   position: relative;
-  height: 100vh;        /* or desired height */
-  overflow: hidden;     /* 🔴 THIS STOPS SCROLL */
+  min-height: 100vh;
 }
 
 .night-bg::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
-
   background-image: url('/images/background.png');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-
   filter: blur(2px);
   transform: scale(1.1);
-  z-index: 0;
+  z-index: -1;
 }
 
-.night-bg > * {
-  position: relative;
-  z-index: 1;
+.font-cinzel {
+  font-family: 'Cinzel', serif;
 }
 
 .event-bg {
+  position: relative;
+  min-height: 100vh;
+}
+.event-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
   background-image: url('/images/events-bg.png');
   background-size: cover;
   background-position: center;
+  z-index: -1;
+}
+
+
+.bg-frame {
+  background-image: url('/images/frame.png');
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 40vh;
 }
 
 .workshop-bg {
   background-image: url('/images/workshops-bg.jpg');
-  background-size: 100% 100%; /* Forces the background to match the div dimensions exactly */
+  background-size: 100% 100%;
   background-repeat: no-repeat;
-  width: 350px; /* Adjust based on your preferred card size */
-  height: 500px; /* Adjust to match your background image aspect ratio */
+  width: 350px;
+  height: 500px;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -62,4 +73,12 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+}
+
+.ws-bg {
+  background-image: url("/images/tf.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 1000px;
+  height: 700px;
 }

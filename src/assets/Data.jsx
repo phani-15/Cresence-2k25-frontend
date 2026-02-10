@@ -17,7 +17,7 @@ export const technicalEventsData = [
             name: "M. Asha Deepthi",
             contact: "96187 95763"
         }],
-        imgSrc: "/images/Event_landscapes/Geniusgateway.jpg",
+        imgSrc: "/images/Event_Portraits/Geniusgateway.png",
     },
     {
         name: "Tech Nova",
@@ -36,7 +36,7 @@ export const technicalEventsData = [
             name: "P. Madhumitha",
             contact: "9949664824"
         }],
-        imgSrc: "/images/Event_landscapes/Technova.jpg",
+        imgSrc: "/images/Event_Portraits/Technova.png",
     },
     {
         name: "Squid Game",
@@ -56,7 +56,7 @@ export const technicalEventsData = [
             name: "M. Bhavani",
             contact: "7207225889"
         }],
-        imgSrc: "/images/Event_landscapes/Squid_Game.png",
+        imgSrc: "/images/Event_Portraits/Squid_Game.png",
     },
     {
         name: "Codemoji",
@@ -77,7 +77,7 @@ export const technicalEventsData = [
             name: "Sk. Kudhan",
             contact: "6304400979",
         }],
-        imgSrc: "/images/Event_landscapes/Codemoji.png",
+        imgSrc: "/images/Event_Portraits/Codemoji.jpg",
     },
     {
         name: "Algo Ascent",
@@ -97,11 +97,11 @@ export const technicalEventsData = [
             name: "B. Jyoshika",
             contact: "6303628136"
         }],
-        imgSrc: "/images/Event_landscapes/AlgoAscent.jpg",
+        imgSrc: "/images/Event_Portraits/AlgoAscent.png",
     },
 ];
 
-export const nonTechnicalEventsData = [
+export const eSportsData = [
     {
         name: "F2-Film Frenzy",
         dates: "March 12th & 13th",
@@ -120,7 +120,7 @@ export const nonTechnicalEventsData = [
             },
         ],
         imgSrc: "/images/Event_Portraits/F2.jpg",
-        indiImg: "/images/Event_landscapes/F2.jpg",
+        indiImg: "/images/Event_Portraits/F2.jpg",
     },
     {
         name: "Battle Of Brains",
@@ -140,7 +140,49 @@ export const nonTechnicalEventsData = [
             },
         ],
         imgSrc: "/images/Event_Portraits/Battleofbrains.jpg",
-        indiImg: "/images/Event_landscapes/BattleOfBrains.jpg",
+        indiImg: "/images/Event_Portraits/BattleOfBrains.jpg",
+    },
+]
+export const nonTechnicalEventsData = [
+    {
+        name: "F2-Film Frenzy",
+        dates: "March 12th & 13th",
+        fees: "150",
+        teamsize: "3",
+        about: "1. Film Scramble: Participant teams are arranged to answer for some tasks such as identifying celebrities, movies, songs, lyrics, cinema names, and scene pictures etc....having 30secs time limit for each task.\n2. Visual & Vocal Ventures: This round has tasks like matching background music (BGM) to songs, identifying movies and songs from videos, and associating emojis with movies and songs etc having 30sec time limit for each task.\n3. PopCorn Quiz: quiz questions like by answering questions about years, emojis, and celebrity identities from their childhood etc. Negative marks are given for incorrect answers and having 30 secs time limit for each question\n4. Rapid Fire: Two teams participate in this round, answering questions like by quickly identifying celebrities, matching BGM to movies, answering questions about years and emojis etc.....having 20 secs time limit for each question \nThis event is designed to test participants' knowledge and quick thinking skills across various aspects of films and music. It sounds like a fun and challenging competition!!!",
+        rules: "Teams must consist of 3 members.\nAll team members must be present at the event start time.\nStage specification - Area will be approximately 20ft x 25ft.\nProps are given by the event coordinators to every single team",
+        coordinators: [
+            {
+                name: "M. Dinesh",
+                contact: "7671033488",
+            },
+            {
+                name: "S. Kavya",
+                contact: "7671033488",
+            },
+        ],
+        imgSrc: "/images/Event_Portraits/F2.jpg",
+        indiImg: "/images/Event_Portraits/F2.jpg",
+    },
+    {
+        name: "Battle Of Brains",
+        dates: "March 12th & 13th",
+        fees: "120",
+        teamsize: "3",
+        about: "Battle Of Brains is a thrilling quiz competition that will put your knowledge, strategy, and teamwork to the test. The event is divided into three rounds, each designed to challenge your cognitive abilities and push your limits.",
+        rules: "Round 1: \nRound Name: Knowledge Sprint\nFormat: All teams will answer the same set of 25 questions.\nRound 2:\nRound Name: Mind Benders\nFormat: Team have choice to choose a random question from a set of question\nRound 3: \nRound Name: Brain Storm.\nFormat: Live quiz with rapid-fire questions\nInstructions:All decisions regarding the competition will be made solely by the conduction team.",
+        coordinators: [
+            {
+                name: "Md. Farhaan Ali",
+                contact: "8500592949",
+            },
+            {
+                name: "Y. Dharani",
+                contact: "9398312944",
+            },
+        ],
+        imgSrc: "/images/Event_Portraits/Battleofbrains.jpg",
+        indiImg: "/images/Event_Portraits/BattleOfBrains.jpg",
     },
     {
         name: "Stealth Quest",
@@ -160,7 +202,7 @@ export const nonTechnicalEventsData = [
             },
         ],
         imgSrc: "/images/Event_Portraits/Stealthquest.jpg",
-        indiImg: "/images/Event_landscapes/StealthQuest.jpg",
+        indiImg: "/images/Event_Portraits/StealthQuest.jpg",
     },
     {
         name: "IPL Auction",
@@ -180,7 +222,7 @@ export const nonTechnicalEventsData = [
             },
         ],
         imgSrc: "/images/Event_Portraits/IPLAuction.jpg",
-        indiImg: "/images/Event_landscapes/IPLAuction.jpg",
+        indiImg: "/images/Event_Portraits/IPLAuction.jpg",
     },
     {
         name: "Sherlock's Challenge",
@@ -200,12 +242,12 @@ export const nonTechnicalEventsData = [
             },
         ],
         imgSrc: "/images/Event_Portraits/Sherlockschallenge.png",
-        indiImg: "/images/Event_landscapes/Sherlockschallenge.png",
+        indiImg: "/images/Event_Portraits/Sherlockschallenge.png",
     },
 ];
 
-export const workshopsData = [
-    {
+export const workshopsData = {
+    cyber:{
         title: "Cyber Threat Intelligence",
         description:
             "The Cyber Threat Intelligence (CTI) Workshop is designed to provide participants with an in-depth understanding of modern cyber threats, attack vectors, and intelligence-driven defense strategies. This workshop will cover topics such as threat identification, analysis of cyber threats, risk mitigation, and the use of real-world intelligence frameworks. Attendees will gain hands-on experience in tracking cyber threats, analyzing attack patterns, and using intelligence tools to enhance cybersecurity defenses. The session will be conducted by Snr Scientist from CDAC Hyderabad and Global expert from Cyberpeace ( from law enforcement). Bringing their extensive knowledge and industry insights to the participants. Additionally, the best performers in the workshop will be awarded a specialized course from OffSec, further enhancing their expertise in cybersecurity.",
@@ -234,7 +276,7 @@ export const workshopsData = [
         ],
         fees: "₹800",
     },
-    {
+    practical:{
         title: "Practical Machine ",
         description:
             "The Practical Machine Learning Workshop aims to bridge the gap between theoretical concepts and real-world applications of machine learning. Participants will explore essential ML techniques, including supervised and unsupervised learning, feature engineering, and model evaluation. Through hands-on coding exercises and case studies, attendees will learn to implement machine learning algorithms using Python and industry-standard libraries such as Scikit-Learn and TensorFlow. This workshop is perfect for students, developers, and researchers who want to gain practical experience in building and optimizing machine learning models for real-world problems.",
@@ -257,4 +299,4 @@ export const workshopsData = [
         ],
         fees: "₹600",
     },
-];
+};
