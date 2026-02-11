@@ -1,5 +1,6 @@
-export const technicalEventsData = [
-    {
+import {House,Info} from "lucide-react"
+export const technicalEventsData = {
+     "Genius Gateway":{
         name: "Genius Gateway",
         dates: "March 12th & 13th",
         fees: "120",
@@ -19,7 +20,7 @@ export const technicalEventsData = [
         }],
         imgSrc: "/images/Event_Portraits/Geniusgateway.png",
     },
-    {
+     "Tech Nova":{
         name: "Tech Nova",
         dates: "March 12th & 13th",
         fees: "120",
@@ -38,7 +39,7 @@ export const technicalEventsData = [
         }],
         imgSrc: "/images/Event_Portraits/Technova.png",
     },
-    {
+    "Squid Game":{
         name: "Squid Game",
         dates: "March 12th & 13th",
         fees: "120",
@@ -58,7 +59,7 @@ export const technicalEventsData = [
         }],
         imgSrc: "/images/Event_Portraits/Squid_Game.png",
     },
-    {
+     "Codemoji":{
         name: "Codemoji",
         dates: "March 12th & 13th",
         fees: "80",
@@ -79,7 +80,7 @@ export const technicalEventsData = [
         }],
         imgSrc: "/images/Event_Portraits/Codemoji.jpg",
     },
-    {
+    "Algo Ascent":    {
         name: "Algo Ascent",
         dates: "March 12th & 13th",
         fees: "80",
@@ -99,10 +100,10 @@ export const technicalEventsData = [
         }],
         imgSrc: "/images/Event_Portraits/AlgoAscent.png",
     },
-];
+}
 
-export const eSportsData = [
-    {
+export const eSportsData = {
+    "F2-Film Frenzy":{
         name: "F2-Film Frenzy",
         dates: "March 12th & 13th",
         fees: "150",
@@ -122,7 +123,7 @@ export const eSportsData = [
         imgSrc: "/images/Event_Portraits/F2.jpg",
         indiImg: "/images/Event_Portraits/F2.jpg",
     },
-    {
+    "Battle Of Brains":{
         name: "Battle Of Brains",
         dates: "March 12th & 13th",
         fees: "120",
@@ -142,9 +143,9 @@ export const eSportsData = [
         imgSrc: "/images/Event_Portraits/Battleofbrains.jpg",
         indiImg: "/images/Event_Portraits/BattleOfBrains.jpg",
     },
-]
-export const nonTechnicalEventsData = [
-    {
+}
+export const nonTechnicalEventsData = {
+    "F2-Film Frenzy": {
         name: "F2-Film Frenzy",
         dates: "March 12th & 13th",
         fees: "150",
@@ -164,7 +165,7 @@ export const nonTechnicalEventsData = [
         imgSrc: "/images/Event_Portraits/F2.jpg",
         indiImg: "/images/Event_Portraits/F2.jpg",
     },
-    {
+    "Battle Of Brains":{
         name: "Battle Of Brains",
         dates: "March 12th & 13th",
         fees: "120",
@@ -184,7 +185,7 @@ export const nonTechnicalEventsData = [
         imgSrc: "/images/Event_Portraits/Battleofbrains.jpg",
         indiImg: "/images/Event_Portraits/BattleOfBrains.jpg",
     },
-    {
+    "Stealth Quest":{
         name: "Stealth Quest",
         dates: "March 12th & 13th",
         fees: "150",
@@ -204,7 +205,7 @@ export const nonTechnicalEventsData = [
         imgSrc: "/images/Event_Portraits/Stealthquest.jpg",
         indiImg: "/images/Event_Portraits/StealthQuest.jpg",
     },
-    {
+    "IPL Auction":{
         name: "IPL Auction",
         dates: "March 12th & 13th",
         fees: "150",
@@ -224,7 +225,7 @@ export const nonTechnicalEventsData = [
         imgSrc: "/images/Event_Portraits/IPLAuction.jpg",
         indiImg: "/images/Event_Portraits/IPLAuction.jpg",
     },
-    {
+    "Sherlock's Challenge":{
         name: "Sherlock's Challenge",
         dates: "March 12th & 13th",
         fees: "150",
@@ -244,8 +245,7 @@ export const nonTechnicalEventsData = [
         imgSrc: "/images/Event_Portraits/Sherlockschallenge.png",
         indiImg: "/images/Event_Portraits/Sherlockschallenge.png",
     },
-];
-
+}
 export const workshopsData = {
     cyber:{
         title: "Cyber Threat Intelligence",
@@ -300,3 +300,126 @@ export const workshopsData = {
         fees: "₹600",
     },
 };
+
+export const timelineItems = [
+    {
+        Icon: House,
+        date: "1",
+        heading: "Inauguration",
+        time: "09:30AM - 11:30AM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Workshops(Session -1)",
+        time: "11:30AM - 01:30PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Tech Nova",
+        time: "12:00PM - 1:30PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "F2 - Film Frenzy",
+        time: "11:30AM - 01:30PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Lunch Break",
+        time: "12:30PM - 02:00PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Workshops(Session - 2)",
+        time: "02:00PM - 05:00PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Sherlock's Challenge",
+        time: "02:00PM - 03:00PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Algo Ascent",
+        time: "02:30PM - 04:00PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Stealth Quest",
+        time: "03:30PM - 05:00PM",
+    },
+    {
+        Icon: Info,
+        date: "1",
+        heading: "Culturals",
+        time: "05:30PM - 09:00PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Workshops(Session - 3)",
+        time: "09:30AM - 12:30PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Squid Game",
+        time: "09:30AM - 11:00AM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Battle Of Brains",
+        time: "10:30AM - 12:30PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Genius Gateway",
+        time: "11:00AM - 01:00PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Lunch Break",
+        time: "12:30AM - 02:00PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Workshops(Session - 4)",
+        time: "02:00AM - 03:30PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "IPL Auction",
+        time: "01:30AM - 03:30PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Codemoji",
+        time: "02:00AM - 03:30PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Valedictory",
+        time: "03:00AM - 05:00PM",
+    },
+    {
+        Icon: Info,
+        date: "2",
+        heading: "Flash mob",
+        time: "05:00AM - 06:30PM",
+    },
+];

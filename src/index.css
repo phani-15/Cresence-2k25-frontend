@@ -61,7 +61,7 @@
   height: 500px;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
+/* .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
 
@@ -73,7 +73,7 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-}
+} */
 
 .ws-bg {
   background-image: url("/images/tf.png");
