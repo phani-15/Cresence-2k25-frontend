@@ -10,68 +10,42 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HomeScene() {
   const containerRef = useRef(null);
   const imgRef = useRef(null);
-  const navbarref=useRef(null);
-  const overlayRef = useRef(null); // Ref for color overlay
 
   useGSAP(() => {
     const tl = gsap.timeline({
     });
-    tl.add("start")
-      .fromTo(imgRef.current,
-        {
-          maskSize: "200px",
-          maskPosition: "50% 50%",
-          scale: 1,
-        },
-        {
-          maskSize: "580vmax",
-          scale: 1,
-          maskPosition: "60% 78%",
-          duration: 2.0,
-          ease: "power2.inOut"
-        },
-        "start"
-      )
-      .fromTo(overlayRef.current,
-        {
-          backgroundSize: "200px",
-          backgroundPosition: "50% 50%",
-          opacity: 1
-        },
-        {
-          backgroundSize: "580vmax",
-          backgroundPosition: "60% 78%",
-          opacity: 0, 
-          duration: 2.0,
-          ease: "power2.inOut"
-        },
-        "start"
-      )
 
-  }, { scope: containerRef });
+    // Initial State: Small mask (Lamp size)
+    // Animation: Scales up huge to reveal the full image
+    tl.fromTo(imgRef.current,
+      {
+        maskSize: "200px",    // Start small (~200px as requested)
+        maskPosition: "50% 50%",
+        scale: 1  ,
+        color:""          // Slight zoom on image for effect
+      },
+      {
+        maskSize: "580vmax",  // Scale massive to reveal everything (covers viewport)
+        scale: 1,
+        maskPosition:"60% 78%",             // Zoom out image slightly
+        duration: 2.0,
+        ease: "power2.inOut"
+      }
+    );
+
+  }, { scope: containerRef });  
 
   return (
     <div ref={containerRef} id="main" className="bg-black relative min-w-screen min-h-screen overflow-hidden">
-      <div className="w-full h-screen bg-black relative flex items-center justify-center">
-        {/* Main Image with Reveal Mask */}
+      <div className="w-full h-screen  bg-black">
         <img
           ref={imgRef}
           src="./images/main_img.png"
-          className="mask-img w-full h-full object-cover object-right fixed"
+          className=" mask-img w-full h-full object-right fixed"
           alt="Main Reveal"
         />
-
-        {/* Color Overlay Lamp - Synced with Mask */}
-        <div
-          ref={overlayRef}
-          className="absolute inset-0 pointer-events-none z-10"
-          style={{
-            backgroundImage: 'url(./images/lamp.png)',
-            backgroundRepeat: 'no-repeat',
-          }}
-        />
       </div>
-      <Navbar ref={navbarref} />
+            <Navbar />
     </div>
   );
 }

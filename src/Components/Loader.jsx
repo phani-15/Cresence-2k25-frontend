@@ -33,7 +33,7 @@ export default function AladdinLampLoader() {
 
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-linear-to-br from-[#0a0a0a] via-[#1a0a0a] to-[#0a0a0a] font-sans overflow-hidden">
+    <div className="flex items-center justify-center min-h-screen bg-black font-sans overflow-hidden">
       <div
         ref={containerRef}
         className="w-full max-w-60 p-8 relative text-center"

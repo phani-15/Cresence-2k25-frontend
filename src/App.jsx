@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
-import HomeScene from './Pages/HomeScene'
+import HomeScene from './Components/EntryScene'
 import Navbar from './Components/Navbar'
 import Loader from "./Components/Loader"
 import Workshops from './Pages/Workshops'

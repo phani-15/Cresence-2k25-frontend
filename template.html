@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lando Norris Menu Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #111112;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Navigation Container */
+        nav {
+            position: relative;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            gap: 60px;
+            padding: 40px;
+        }
+
+        /* Menu Item */
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* Menu Link */
+        .menu-link {
+            position: relative;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            color: #fff;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        /* Text wrapper for animation */
+        .text-wrapper {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        /* Original and hover text */
+        .text-original,
+        .text-hover {
+            display: block;
+            position: relative;
+        }
+
+        .text-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #D2FF00;
+            transform: translateY(100%);
+        }
+
+        /* Character spans for split text animation */
+        .char {
+            display: inline-block;
+            position: relative;
+            transform-origin: bottom center;
+        }
+
+        /* Hover background image */
+        .menu-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.4);
+        }
+
+        /* Underline effect */
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #D2FF00;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+        }
+
+        .menu-item:hover .menu-link::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Active state */
+        .menu-item.active .menu-link {
+            color: #D2FF00;
+        }
+
+        /* Demo instructions */
+        .instructions {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Image container for smooth transitions */
+        .bg-images {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.3) saturate(1.2);
+        }
+
+        .bg-image.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Images -->
+    <div class="bg-images">
+        <div class="bg-image" data-index="0" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80');"></div>
+        <div class="bg-image" data-index="1" style="background-image: url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1920&q=80');"></div>
+        <div class="bg-image" data-index="2" style="background-image: url('https://images.unsplash.com/photo-1596524430615-b46475ddff6e?w=1920&q=80');"></div>
+        <div class="bg-image" data-index="3" style="background-image: url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1920&q=80');"></div>
+        <div class="bg-image" data-index="4" style="background-image: url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=1920&q=80');"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <ul class="menu">
+            <li class="menu-item" data-bg="0">
+                <a href="#" class="menu-link">
+                    <span class="text-wrapper">
+                        <span class="text-original" data-text="Home">Home</span>
+                        <span class="text-hover" data-text="Home">Home</span>
+                    </span>
+                </a>
+            </li>
+            <li class="menu-item" data-bg="1">
+                <a href="#" class="menu-link">
+                    <span class="text-wrapper">
+                        <span class="text-original" data-text="On Track">On Track</span>
+                        <span class="text-hover" data-text="On Track">On Track</span>
+                    </span>
+                </a>
+            </li>
+            <li class="menu-item" data-bg="2">
+                <a href="#" class="menu-link">
+                    <span class="text-wrapper">
+                        <span class="text-original" data-text="Off Track">Off Track</span>
+                        <span class="text-hover" data-text="Off Track">Off Track</span>
+                    </span>
+                </a>
+            </li>
+            <li class="menu-item" data-bg="3">
+                <a href="#" class="menu-link">
+                    <span class="text-wrapper">
+                        <span class="text-original" data-text="Partnerships">Partnerships</span>
+                        <span class="text-hover" data-text="Partnerships">Partnerships</span>
+                    </span>
+                </a>
+            </li>
+            <li class="menu-item" data-bg="4">
+                <a href="#" class="menu-link">
+                    <span class="text-wrapper">
+                        <span class="text-original" data-text="Calendar">Calendar</span>
+                        <span class="text-hover" data-text="Calendar">Calendar</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="instructions">Hover over menu items</div>
+
+    <!-- GSAP from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+
+    <script>
+        // Split text into characters for animation
+        function splitTextIntoChars(element) {
+            const text = element.getAttribute('data-text');
+            element.innerHTML = '';
+            
+            text.split('').forEach((char) => {
+                const span = document.createElement('span');
+                span.className = 'char';
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                element.appendChild(span);
+            });
+        }
+
+        // Initialize all text elements
+        document.querySelectorAll('.text-original, .text-hover').forEach(splitTextIntoChars);
+
+        // Menu items
+        const menuItems = document.querySelectorAll('.menu-item');
+        const bgImages = document.querySelectorAll('.bg-image');
+
+        menuItems.forEach((item, index) => {
+            const link = item.querySelector('.menu-link');
+            const originalChars = item.querySelectorAll('.text-original .char');
+            const hoverChars = item.querySelectorAll('.text-hover .char');
+            const bgIndex = item.getAttribute('data-bg');
+            
+            // Create timeline for hover animation
+            const hoverTimeline = gsap.timeline({ paused: true });
+            
+            // Animate original text out (slide up and fade)
+            hoverTimeline.to(originalChars, {
+                y: -100,
+                opacity: 0,
+                rotationX: -90,
+                stagger: 0.02,
+                duration: 0.5,
+                ease: 'power3.in'
+            }, 0);
+            
+            // Animate hover text in (slide up from bottom)
+            hoverTimeline.fromTo(hoverChars, 
+                {
+                    y: 100,
+                    opacity: 0,
+                    rotationX: 90
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    rotationX: 0,
+                    stagger: 0.02,
+                    duration: 0.5,
+                    ease: 'power3.out'
+                }, 
+                0.1
+            );
+
+            // Mouse enter
+            item.addEventListener('mouseenter', () => {
+                hoverTimeline.play();
+                
+                // Fade in background image
+                bgImages.forEach(bg => {
+                    if (bg.getAttribute('data-index') === bgIndex) {
+                        gsap.to(bg, {
+                            opacity: 1,
+                            duration: 0.6,
+                            ease: 'power2.out'
+                        });
+                    } else {
+                        gsap.to(bg, {
+                            opacity: 0,
+                            duration: 0.6,
+                            ease: 'power2.out'
+                        });
+                    }
+                });
+            });
+
+            // Mouse leave
+            item.addEventListener('mouseleave', () => {
+                hoverTimeline.reverse();
+                
+                // Fade out all background images
+                gsap.to(bgImages, {
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Initial entrance animation for menu items
+        gsap.fromTo('.menu-item', 
+            {
+                y: 30,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: 'power3.out',
+                delay: 0.3
+            }
+        );
+
+        // Animate instructions
+        gsap.fromTo('.instructions',
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 1, delay: 1.5, ease: 'power2.out' }
+        );
+
+        // Optional: Add magnetic effect on mouse move
+        menuItems.forEach(item => {
+            const link = item.querySelector('.menu-link');
+            
+            item.addEventListener('mousemove', (e) => {
+                const rect = item.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                gsap.to(link, {
+                    x: x * 0.2,
+                    y: y * 0.2,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                gsap.to(link, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'elastic.out(1, 0.5)'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

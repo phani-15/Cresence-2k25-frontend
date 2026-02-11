@@ -4,14 +4,14 @@ import {workshopsData} from '../assets/Data'
 export default function Workshops() {
   return (
     <div className='event-bg'>
-        <h1 className='text-6xl font-serif text-white font-bold text-center py-10'>WORKSHOPS</h1>
+        <h1 className='text-6xl font-arabian  text-white font-bold  text-center py-10'>WORKSHOPS</h1>
 
         <div className='flex flex-wrap justify-center gap-10'>
     {workshopsData.map((item, index) => (
-  <div 
-    key={index} 
-    className='w-80 workshop-bg rounded-lg shadow-2xl border-4 border-gray-800 overflow-hidden flex flex-col'
-  >
+      <div 
+      key={index} 
+      className='w-80 workshop-bg rounded-lg shadow-2xl border-4 border-gray-800 overflow-hidden flex flex-col'
+      >
     {/* Upper Part: 16:9 Image Container */}
     <div className='p-3'> {/* Creating the 'Frame' padding */}
       <div className='w-full aspect-video overflow-hidden border-2 border-black rounded-sm shadow-inner bg-black'>
@@ -19,7 +19,7 @@ export default function Workshops() {
           src={item.image} 
           alt={item.title} 
           className='w-full h-full object-cover object-top' 
-        />
+          />
       </div>
     </div>
 

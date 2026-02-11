@@ -257,4 +257,27 @@ export const workshopsData = [
         ],
         fees: "₹600",
     },
+    {
+        title: "AIml",
+        description:
+            "The Practical Machine Learning Workshop aims to bridge the gap between theoretical concepts and real-world applications of machine learning. Participants will explore essential ML techniques, including supervised and unsupervised learning, feature engineering, and model evaluation. Through hands-on coding exercises and case studies, attendees will learn to implement machine learning algorithms using Python and industry-standard libraries such as Scikit-Learn and TensorFlow. This workshop is perfect for students, developers, and researchers who want to gain practical experience in building and optimizing machine learning models for real-world problems.",
+        instructor: "Dr. Y. Narasimhulu",
+        position: "Research and Development(R&D) Associate @TCS",
+        date: "March 12th & 13th",
+        mode: "Offline",
+        image: "/images/Event_landscapes/Code.jpg",
+        color: "text-blue-500",
+        rules: "1. Open to students, professionals, and tech enthusiasts from all backgrounds.\n2. Participants must register in advance to secure a spot, as seats are limited.\n3. Attendees must be present for the entire duration of the workshop to receive a certificate of participation.\n4. Laptops with pre-installed required software are recommended for practical sessions.\n5. Participants must maintain a respectful and professional environment during discussions and activities.\n6. Some sessions may include quizzes or hands-on challenges to assess participant engagement and learning.\n7. Participants must cooperate with the organizing committee and members of Cresence to ensure a smooth and productive workshop experience.",
+        coordinators: [
+            {
+                name: "V. Anjenaya Sarma",
+                contact: "8106855383",
+            },
+            {
+                name: "K. Samatha",
+                contact: "7416079171",
+            },
+        ],
+        fees: "₹600",
+    },
 ];
