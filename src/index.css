@@ -108,12 +108,22 @@
   font-family: 'Cinzel', serif;
 }
 
-.event-bg {
+.event-bg,.work-bg {
   position: relative;
   min-height: 100vh;
 }
 
 .event-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/images/events-bg.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.work-bg::before{
   content: "";
   position: fixed;
   inset: 0;
@@ -144,5 +154,5 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 1000px;
-  height: 700px;
+  height: 900px;
 }

@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
+import Workshops from "./Workshops";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -156,6 +157,7 @@ export default function HomeScene() {
 
       {/* Navbar — always on top */}
       <Navbar ref={navbarref} />
+      <Workshops/>
     </div>
   );
 }

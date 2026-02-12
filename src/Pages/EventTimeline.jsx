@@ -31,8 +31,8 @@ export default function SpiralTimeline({ timelineItems }) {
     
     let pathData = `M${startX} ${startY}`; // Start at first item position
     
-    // Create curves connecting all items
-    for (let i = 0; i < itemCount - 1; i++) {
+    // Create curves connecting all items (stop at itemCount - 1)
+    for (let i = 0; i < itemCount ; i++) {
       const currentIsRight = i % 2 === 0;
       const nextIsRight = (i + 1) % 2 === 0;
       
@@ -150,7 +150,7 @@ export default function SpiralTimeline({ timelineItems }) {
 
   return (
     <section
-      className="relative bg-cover event-bg bg-center"
+      className="relative bg-cover work-bg bg-center"
       style={{ minHeight: `${svgHeight + 300}px` }}
     >
       {/* subtle overlay for contrast */}
@@ -167,7 +167,7 @@ export default function SpiralTimeline({ timelineItems }) {
           >
             <defs>
               <filter id="glow">
-                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                 <feMerge>
                   <feMergeNode in="coloredBlur"/>
                   <feMergeNode in="SourceGraphic"/>
@@ -181,7 +181,7 @@ export default function SpiralTimeline({ timelineItems }) {
               d={pathData}
               fill="none"
               stroke="#e6c07b"
-              strokeWidth="5"
+              strokeWidth="28"
               strokeLinecap="round"
               strokeLinejoin="round"
               filter="url(#glow)"
@@ -205,7 +205,7 @@ export default function SpiralTimeline({ timelineItems }) {
               >
                 {/* Connector line from card to spiral */}
                 <div 
-                  className="connector-line absolute top-1/2 h-0.5 bg-linear-to-r from-[#e6c07b]/60 to-transparent"
+                  className="connector-line absolute top-1/2 h-0.5 bg-gradient-to-r from-[#e6c07b]/60 to-transparent"
                   style={{
                     width: '140px',
                     [isRight ? 'right' : 'left']: '100%',

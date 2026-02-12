@@ -9,14 +9,42 @@ export default function Workshops() {
     return str.replace(/\s+/g, "");
   }
   return (
-    <div className="event-bg">
+    <div className="bg-transparent">
       <div>
 
         <h1 className="text-6xl font-serif text-white font-bold text-center pt-10">
           WORKSHOPS
         </h1>
-        {/* // ... inside your Workshops component ... */}
+        {/* SWITCH/TOGGLE COMPONENT - PILL STYLE */}
+        <div className="flex justify-center mt-8">
+          <div className="relative bg-violet-950/60 backdrop-blur-sm border border-violet-700 rounded-full p-1 shadow-lg">
+            {/* Sliding background indicator */}
+            <div
+              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-linear-to-r transition-all duration-500 ease-in-out ${selected === "practical"
+                ? "left-1 from-violet-600 to-fuchsia-600"
+                : "left-[calc(50%+2px)] from-cyan-600 to-blue-600"
+                }`}
+            />
 
+            {/* Practical ML Option */}
+            <button
+              onClick={() => setSelected("practical")}
+              className={`relative px-6 py-2.5 rounded-full text-sm md:text-base font-medium transition-colors duration-300 z-10 ${selected === "practical" ? "text-white" : "text-slate-300 hover:text-white"
+                }`}
+            >
+              Practical ML
+            </button>
+
+            {/* Cyber Chase Option */}
+            <button
+              onClick={() => setSelected("cyber")}
+              className={`relative px-6 py-2.5 rounded-full text-sm md:text-base font-medium transition-colors duration-300 z-10 ${selected === "cyber" ? "text-white" : "text-slate-300 hover:text-white"
+                }`}
+            >
+              Cyber Chase
+            </button>
+          </div>
+        </div>
         <div className="flex justify-center px-6">
           {/* Added items-stretch to ensure both sides have similar height footprint */}
           <div className="flex flex-col lg:flex-row mt-10 items-stretch justify-center gap-10 max-w-7xl">
@@ -30,7 +58,7 @@ export default function Workshops() {
                 loading="lazy"
               />
               <div className="w-full flex flex-col gap-6 mt-6">
-                <h2 className="text-2xl md:text-3xl text-slate-200 font-cinzel font-semibold">
+                <h2 className="text-2xl lg:text-2xl text-slate-200 font-cinzel font-semibold">
                   {workshopsData[selected].title.toUpperCase()}
                 </h2>
                 <div className="bg-violet-950/50 border border-violet-800 rounded-xl text-slate-100 p-5">
@@ -44,9 +72,9 @@ export default function Workshops() {
             {/* RIGHT : THE SCROLL CARD */}
             <div className="ws-bg flex flex-col items-center justify-center text-center">
               {/* Content Wrapper: Controls width so text stays inside the scroll gold borders */}
-              <div className="w-[80%] md:w-[60%] lg:w-[50%] flex flex-col gap-8">
+              <div className="w-[80%] md:w-[60%] lg:w-[50%] flex flex-col gap-12">
 
-                <div className="space-y-2 px-6">
+                <div className=" px-6">
                   <h2 className="text-3xl font-cinzel text-white border-b border-white/20 pb-1 inline-block">
                     About
                   </h2>
@@ -55,7 +83,7 @@ export default function Workshops() {
                   </p>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 pb-25">
                   <h2 className="text-2xl font-cinzel text-white">Co-ordinators</h2>
                   <div className="text-white text-sm">
                     {workshopsData[selected].coordinators.map((coordinator, index) => (
@@ -68,9 +96,9 @@ export default function Workshops() {
 
               </div>
             </div>
-
           </div>
         </div>
+
       </div>
     </div>
   );
