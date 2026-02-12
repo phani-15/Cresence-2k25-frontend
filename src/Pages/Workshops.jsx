@@ -21,8 +21,8 @@ export default function Workshops() {
             {/* Sliding background indicator */}
             <div
               className={`absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-linear-to-r transition-all duration-500 ease-in-out ${selected === "practical"
-                  ? "left-1 from-violet-600 to-fuchsia-600"
-                  : "left-[calc(50%+2px)] from-cyan-600 to-blue-600"
+                ? "left-1 from-violet-600 to-fuchsia-600"
+                : "left-[calc(50%+2px)] from-cyan-600 to-blue-600"
                 }`}
             />
 
@@ -96,9 +96,9 @@ export default function Workshops() {
 
               </div>
             </div>
-
           </div>
         </div>
+
       </div>
     </div>
   );

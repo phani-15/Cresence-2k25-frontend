@@ -9,8 +9,68 @@
   src: url("/CinzelDecorative-Bold.ttf");
   font-weight: 400;
   font-style: normal;
-  /* font-display: swap; */
 }
+
+/* ─────────────────────────────────────────────
+   PARALLAX BACKGROUND TRICK
+   The ::before pseudo-element on .night-bg and
+   .night-bg-mobile is position:fixed so it stays
+   pinned to the viewport while scroll content
+   flows over it — pure CSS parallax, no JS needed.
+   z-index:-1 puts it behind everything.
+───────────────────────────────────────────── */
+
+.night-bg {
+  position: relative;
+  min-height: 100vh;
+}
+
+.night-bg::before {
+  content: "";
+  position: fixed;       /* ← key: stays put when page scrolls */
+  inset: 0;
+  background-image: url('/images/main_img.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  transform: scale(1.1); /* hides blur edges */
+  z-index: -1;           /* sits behind all content */
+}
+
+.night-bg-mobile {
+  position: relative;
+  min-height: 100vh;     /* min-height so it expands with content */
+}
+
+.night-bg-mobile::before {
+  content: "";
+  position: fixed;       /* ← same fix as above */
+  inset: 0;
+  background-image: url('/images/main_img-mobile.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+/* ─────────────────────────────────────────────
+   MASK ANIMATION TARGET
+   The mask-img utility drives the lamp-reveal
+   morph. GSAP animates maskSize and maskPosition.
+───────────────────────────────────────────── */
+
+@utility mask-img {
+  mask-image: url("/images/lamp.png");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 70%;
+}
+
+/* ─────────────────────────────────────────────
+   OTHER BACKGROUNDS
+───────────────────────────────────────────── */
 
 .desert-bg {
   background-image: url('/images/background.png');
@@ -21,60 +81,27 @@
   width: 100%;
 }
 
-.night-bg {
+.about-bg {
   position: relative;
   height: 100vh;
-  /* or desired height */
-  overflow: hidden;
-  /* 🔴 THIS STOPS SCROLL */
-}
-.night-bg-mobile {
-  position: relative;
-  height: 100vh;
-  /* or desired height */
-  overflow: hidden;
-  /* 🔴 THIS STOPS SCROLL */
 }
 
+.about-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/about_frame1.png');
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  transform: scale(1.1);
+  z-index: 1;
+}
 
 .bg-castle {
   background-image: url('/images/castle.png');
   background-position: center;
   background-repeat: no-repeat;
-}
-
-@utility mask-img {
-  mask-image: url("/images/lamp.png");
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: 70%;
-}
-
-.night-bg::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-
-  background-image: url('/images/main_img.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  filter: blur(2px);
-  transform: scale(1.1);
-  z-index: 0;
-}
-.night-bg-mobile::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background-image: url('/images/main_img-mobile.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: blur(2px);
-  transform: scale(1.1);
-  z-index: -1;
 }
 
 .font-cinzel {
@@ -85,6 +112,7 @@
   position: relative;
   min-height: 100vh;
 }
+
 .event-bg::before {
   content: "";
   position: fixed;
@@ -105,7 +133,6 @@
   z-index: -1;
 }
 
-
 .bg-frame {
   background-image: url('/images/frame.png');
   background-size: cover;
@@ -121,20 +148,6 @@
   width: 350px;
   height: 500px;
 }
-
-/* .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-} */
 
 .ws-bg {
   background-image: url("/images/tf.png");

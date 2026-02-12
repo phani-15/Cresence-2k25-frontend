@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import Navbar from "./Navbar";
+import Ourteam  from "./Ourteam";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -53,20 +54,20 @@ export default function HomeScene() {
         opacity: 0,
         duration: 1,
       }, "end")
-      .from("h1 span",{
-        y:"100%",
-        opacity:0,
-        duration:0.5,
-        stagger:0.08,
-        ease:"power2.out"
-      },"end")
+      .from("h1 span", {
+        y: "100%",
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power2.out"
+      }, "end")
       .from(".entry-scene-text", { // 👈 Target only the specific p tag
-      y: 100,
-      opacity: 0,
-      duration: 1,
-    }, "end")
+        y: 100,
+        opacity: 0,
+        duration: 1,
+      }, "end")
 
-  },{scope:containerRef});
+  }, { scope: containerRef });
 
   return (
     <div ref={containerRef} id="main" className="bg-black relative min-w-screen min-h-screen overflow-hidden">
@@ -87,18 +88,19 @@ export default function HomeScene() {
             backgroundRepeat: 'no-repeat',
           }}
         />
-      </div> 
+      </div>
       <Navbar ref={navbarref} />
       <h1 className="text-white absolute top-0 right-0 md:hidden text-[7vh] mt-80 mr-10 font-arabian">
         {"cresence".split("").map((char, i) => (
-										<span key={i} className="inline-block">
-											{char === " " ? "\u00A0" : char}
-										</span>
-      ))}
+          <span key={i} className="inline-block">
+            {char === " " ? "\u00A0" : char}
+          </span>
+        ))}
       </h1>
-      <Workshops/>
-<p className="absolute font-arabian top-95 right-12 md:hidden text-white text-[20px] entry-scene-text">
-  2k26
-</p>    </div>
+      <p className="absolute font-arabian top-95 right-12 md:hidden text-white text-[20px] entry-scene-text">
+        2k26
+      </p>  
+      <Ourteam/> 
+    </div>
   );
 }
