@@ -50,24 +50,37 @@ const Navbar = React.forwardRef(() => {
 	const targetDate = "2026-03-06T00:00:00+05:30";
 	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetDate));
 	const [menuOpen, setMenuOpen] = useState(false);
-	const lastScrollY = useRef(window.scrollY);
+	const [isScrolled, setIsScrolled] = useState(false);
+	const lastScrollY = useRef(0);
 	const timeref = useRef();
 	const menuref = useRef();
 	const menuIconRef = useRef();
 	const navLinksRef = useRef([]); // Initialize for animating nav links
 
-useGSAP(() => {
-    gsap.from(".countdown-number", 
-        {
-            y: 20,
-            opacity: 0,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-            delay: 0.5,
-        }
-    );
-}, {scope: timeref});
+	useGSAP(() => {
+		gsap.from(".countdown-number",
+			{
+				y: 20,
+				opacity: 0,
+				stagger: 0.1,
+				duration: 0.8,
+				ease: "power3.out",
+				delay: 0.5,
+			}
+		);
+
+		// Hide countdown on scroll
+		gsap.to(timeref.current, {
+			opacity: 0,
+			y: 20,
+			scrollTrigger: {
+				trigger: "body",
+				start: "top top",
+				end: "200 top", // Disappear after 200px of scroll
+				scrub: true,
+			}
+		});
+	}, { scope: timeref });
 	// This hook only runs when menuOpen changes
 	useGSAP(() => {
 		const validNavLinks = navLinksRef.current.filter(el => el !== null);
@@ -135,14 +148,10 @@ useGSAP(() => {
 		return () => clearInterval(interval);
 	}, [targetDate]);
 
-	// Hide or show navbar on scroll
+	// Track scroll for other potential UI changes
 	useEffect(() => {
 		const handleScroll = () => {
-			if (window.scrollY > lastScrollY.current) {
-				setIsVisible(false);
-			} else {
-				setIsVisible(true);
-			}
+			setIsScrolled(window.scrollY > 50);
 			lastScrollY.current = window.scrollY;
 		};
 
@@ -152,13 +161,13 @@ useGSAP(() => {
 
 	return (
 		<>
-			<div className="flex flex-row">
+			<div className="flex flex-row overflow-x-hidden">
 				<img src="/images/logo.png" alt="" className="absolute top-0 right-0 left-0 h-[6vh] ml-10 mt-10" />
 				{/* timebar with blur */}
 				<div>
 					<div
 						ref={timeref}
-						className="hidden bottom-0 absolute mb-10 ml-140 border rounded-4xl lg:flex text-center py-1 px-8 pt-2 items-center bg-black/60 backdrop-blur-md"
+						className="hidden fixed bottom-10 left-1/2 -translate-x-1/2 border border-white/20 rounded-4xl lg:flex text-center py-2 px-8 items-center bg-black/60 backdrop-blur-md z-10"
 					>
 						<div className="font-arabian text-white flex justify-center space-x-4">
 							{[
@@ -170,8 +179,8 @@ useGSAP(() => {
 								<div key={item.label} className="overflow-hidden text-center">
 									<span className=" block">{item.value}</span> {/* Add class here */}
 									<p className="text-xs countdown-number opacity-100">
-    {item.label}
-</p>
+										{item.label}
+									</p>
 								</div>
 							))}
 						</div>
