@@ -11,15 +11,6 @@
   font-style: normal;
 }
 
-/* ─────────────────────────────────────────────
-   PARALLAX BACKGROUND TRICK
-   The ::before pseudo-element on .night-bg and
-   .night-bg-mobile is position:fixed so it stays
-   pinned to the viewport while scroll content
-   flows over it — pure CSS parallax, no JS needed.
-   z-index:-1 puts it behind everything.
-───────────────────────────────────────────── */
-
 .night-bg {
   position: relative;
   min-height: 100vh;
@@ -110,7 +101,6 @@
 
 .event-bg,.work-bg {
   position: relative;
-  min-height: 100vh;
 }
 
 .event-bg::before {
@@ -153,6 +143,19 @@
   background-image: url("/images/tf.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  width: 1000px;
-  height: 900px;
+}
+
+.wf-bg{
+  background-image: url("/images/wf2.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+@layer utilities {
+  .perspective-\[1600px\] {
+    perspective: 1600px;
+  }
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
 }

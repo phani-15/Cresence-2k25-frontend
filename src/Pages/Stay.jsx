@@ -155,8 +155,8 @@ export default function Stay() {
 
 						<Section title="About">
 							<p>
-								<span className="text-emerald-400 font-semibold">CRESENCE Fest 2K26</span>
-								is scheduled on <span className="text-amber-300">March 12 & 13</span> at
+								<span className="text-emerald-400 font-semibold">CRESENCE Fest 2K26 </span>
+								is scheduled on <span className="text-amber-300">March 6 & 7</span> at
 								JNTU Gurajada, Vizianagaram. We provide secure accommodation for two
 								nights and two days, ensuring a smooth and worry-free fest experience.
 							</p>

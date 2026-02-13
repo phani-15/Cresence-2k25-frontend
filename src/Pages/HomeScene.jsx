@@ -5,7 +5,10 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
-import Workshops from "./Workshops";
+import WorkShopsComponent from '../Components/WorkShopsComponent'
+import TechEventDeck from "../Components/TechnicalEves";
+import { technicalEventsData } from "../assets/Data";
+// import ArabianRoyalDeck from "../Components/ArabianRoyalDeck";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,9 +120,8 @@ export default function HomeScene() {
     <div
       ref={containerRef}
       id="main"
-      className={`relative ${
-        animationDone ? "night-bg-mobile md:night-bg" : "bg-black"
-      } min-w-screen overflow-x-hidden overflow-y-auto`}
+      className={`relative ${animationDone ? "night-bg-mobile md:night-bg" : "bg-black"
+        } min-w-screen overflow-hidden`}
     >
       {/*
         HERO VIEWPORT SECTION
@@ -127,7 +129,7 @@ export default function HomeScene() {
         Exactly one viewport tall. Contains the mask animation target and overlay.
         position:relative + z-index:0 so it sits above the fixed ::before bg.
       */}
-      <div className="w-full h-screen relative z-0 flex flex-col items-center justify-center">
+      <div className="w-screen h-screen relative z-0 flex flex-col items-center justify-center">
 
         {/*
           MASK TARGET DIV
@@ -143,9 +145,8 @@ export default function HomeScene() {
         */}
         <div
           ref={imgRef}
-          className={`mask-img ${
-            animationDone ? "bg-transparent" : "night-bg-mobile md:night-bg"
-          } absolute inset-0 w-full h-full`}
+          className={`mask-img ${animationDone ? "bg-transparent" : "night-bg-mobile md:night-bg"
+            } absolute inset-0 w-full h-full`}
         />
 
         {/*
@@ -193,13 +194,15 @@ export default function HomeScene() {
         className="relative z-10"
         style={{ visibility: "hidden", opacity: 0 }} // GSAP autoAlpha controls this
       >
-        <Ourteam />
+        <WorkShopsComponent />
+        {/* <ArabianRoyalDeck /> */}
+        {/* <Ourteam /> */}
+        <TechEventDeck events={technicalEventsData}/>
         {/* Add more sections here — keep their backgrounds transparent */}
       </div>
 
       {/* Navbar always on top */}
       <Navbar ref={navbarref} />
-      <Workshops/>
     </div>
   );
 }
