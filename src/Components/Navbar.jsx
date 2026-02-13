@@ -167,7 +167,7 @@ const Navbar = React.forwardRef(() => {
 				<div>
 					<div
 						ref={timeref}
-						className="hidden fixed bottom-10 left-1/2 -translate-x-1/2 border border-white/20 rounded-4xl lg:flex text-center py-2 px-8 items-center bg-black/60 backdrop-blur-md z-10"
+						className="hidden fixed bottom-10 left-1/2 -translate-x-1/2 border border-white/20 rounded-4xl lg:flex text-center py-2 px-8 items-center bg-black/60 backdrop-blur-md -z-1"
 					>
 						<div className="font-arabian text-white flex justify-center space-x-4">
 							{[

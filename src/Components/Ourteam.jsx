@@ -1,24 +1,7 @@
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-
-const facultyMembers = [
-  { id: 1, name: "Phani Vinay", role: "Team Lead", image: "/images/nari.jpeg" },
-  { id: 2, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 3, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-];
-const teamMembers = [
-  { id: 1, name: "Phani Vinay", role: "Team Lead", image: "/images/phani.jpeg" },
-  { id: 2, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 3, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 4, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 5, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 6, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 7, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 8, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 9, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-  { id: 10, name: "Member Name", role: "Coordinator", image: "/images/phani.jpeg" },
-];
+import {teamMembers,facultyMembers} from "../assets/Data"
 
 const TeamMemberCard = ({ member }) => {
   const frameRef = useRef(null);

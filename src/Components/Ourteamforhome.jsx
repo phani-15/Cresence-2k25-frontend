@@ -2,55 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Github, Linkedin, Instagram } from "lucide-react";
-
-const coordinators = [
-    {
-        id: 1,
-        name: "srinivas ",
-        role: "Fest Coordinator",
-        image: "/images/phani.jpeg", // Using phani.jpeg as per user's recent file changes
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com",
-    },
-    {
-        id: 2,
-        name: "vinay",
-        role: "Management Head",
-        image: "/images/nari.jpeg",
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com",
-    },
-    {
-        id: 3,
-        name: "narendra",
-        role: "Tech Lead",
-        image: "/images/phani.jpeg",
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com",
-    },
-    {
-        id: 3,
-        name: "srujana",
-        role: "Tech Lead",
-        image: "/images/nari.jpeg",
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com",
-    },
-    {
-        id: 3,
-        name: "tejasatwika",
-        role: "Tech Lead",
-        image: "/images/phani.jpeg",
-        github: "https://github.com",
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com",
-    },
-    // Add more members as needed
-];
+import {homecoods as coordinators} from "../assets/Data"
 
 export default function Ourteamforhome() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -157,7 +109,7 @@ export default function Ourteamforhome() {
                     </div>
 
                     {/* SOCIAL LINKS */}
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-6 ">
                         <a href={activeMember.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
                             <Github size={28} />
                         </a>
@@ -172,12 +124,13 @@ export default function Ourteamforhome() {
             </div>
 
             {/* NAVIGATION ARROWS (Placed at bottom center or absolute sides depending on design) */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-8 md:gap-12 z-30">
+            <div className="absolute bottom-3 md:bottom-10 left-1/2  -translate-x-1/2 flex items-center  gap-8 md:gap-12 z-30">
                 <button
-                    onClick={prevMember}
                     className="hover:scale-110 transition-transform active:scale-95 group focus:outline-none cursor-pointer"
                 >
-                    <img src="/images/nav.png" alt="Prev" className="w-12 h-12 md:w-14 md:h-14 rotate-180 brightness-75 group-hover:brightness-100" />
+                    <img 
+                    onClick={prevMember}
+                    src="/images/nav.png" alt="Prev" className="w-12 h-12 md:w-14 md:h-14 cursor-pointer rotate-180 brightness-75 group-hover:brightness-100" />
                 </button>
                 <button
                     onClick={nextMember}
