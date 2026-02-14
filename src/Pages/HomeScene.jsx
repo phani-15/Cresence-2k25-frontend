@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import Navbar from "../Components/Navbar";
 import Ourteamforhome from "../Components/Ourteamforhome";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -7,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
 import WorkShopsComponent from '../Components/WorkShopsComponent'
 import TechEventDeck from "../Components/TechnicalEves";
-import { technicalEventsData } from "../assets/Data";
+import { nonTechnicalEventsData, technicalEventsData } from "../assets/Data";
 // import ArabianRoyalDeck from "../Components/ArabianRoyalDeck";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HomeScene() {
   const containerRef = useRef(null);
   const imgRef = useRef(null);
-  const navbarref = useRef(null);
   const overlayRef = useRef(null);
   const scrollContentRef = useRef(null);
   const [animationDone, setAnimationDone] = useState(false);
@@ -29,7 +27,7 @@ export default function HomeScene() {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
     };
-  }, []); 
+  }, []);
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -66,7 +64,6 @@ export default function HomeScene() {
         "start"
       )
       .add("end")
-      .from(navbarref.current, { opacity: 0, duration: 1 }, "end")
       .from(
         "h1 span",
         {
@@ -90,9 +87,8 @@ export default function HomeScene() {
     <div
       ref={containerRef}
       id="main"
-      className={`relative ${
-        animationDone ? "night-bg-mobile md:night-bg" : "bg-black"
-      } min-w-screen overflow-x-hidden`}
+      className={`relative ${animationDone ? "night-bg-mobile md:night-bg" : "bg-black"
+        } w-full overflow-x-hidden`}
     >
       {/*
         HERO VIEWPORT SECTION
@@ -100,7 +96,7 @@ export default function HomeScene() {
         Exactly one viewport tall. Contains the mask animation target and overlay.
         position:relative + z-index:0 so it sits above the fixed ::before bg.
       */}
-      <div className="w-screen h-screen relative z-0 flex flex-col items-center justify-center">
+      <div className="w-full h-screen relative z-0 flex flex-col items-center justify-center">
 
         {/* Mask reveal target — must stay childless, CSS mask clips all children */}
         <div
@@ -135,11 +131,11 @@ export default function HomeScene() {
         <WorkShopsComponent />
         {/* <ArabianRoyalDeck /> */}
         {/* <Ourteam /> */}
-        <TechEventDeck events={technicalEventsData}/>
+        <TechEventDeck events={technicalEventsData} name={"technical events"}/>
+        <TechEventDeck events={nonTechnicalEventsData} name={"non-technical events"} />
         {/* Add more sections here — keep their backgrounds transparent */}
         <Ourteamforhome />
-        </div>
-      <Navbar ref={navbarref} />
+      </div>
     </div>
   );
 }

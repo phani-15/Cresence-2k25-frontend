@@ -18,48 +18,48 @@ export default function Workshops() {
 	}, []);
 
 	return (
-		<div>
+		<div className=''>
 			{isMobile ?
 				<>
-			<h1 className="text-4xl font-serif text-white font-bold text-center pt-10">
-				WORKSHOPS
-			</h1>
-			<div>
-					{Object.entries(workshopsData).map(([key, eve], index) => {
-						return (
-							<div className="flex justify-center mx-10">
-								{/* Added items-stretch to ensure both sides have similar height footprint */}
-								<div className="flex flex-col mt-10 lg:flex-row mt-2 items-stretch justify-center gap-10 max-w-7xl">
-									{/* LEFT : IMAGE & INFO */}
-									<div className="ws-bg w-95 h-125 flex flex-col items-center m-4 mx-10 justify-center text-center">
-										{/* Content Wrapper: Controls width so text stays inside the scroll gold borders */}
-										<div className="w-[70%] flex flex-col gap-4">
+					<h1 className="text-4xl font-serif text-white font-bold text-center pt-10">
+						WORKSHOPS
+					</h1>
+					<div>
+						{Object.entries(workshopsData).map(([key, eve], index) => {
+							return (
+								<div key={key} className="flex justify-center mx-10">
+									{/* Added items-stretch to ensure both sides have similar height footprint */}
+									<div className="flex flex-col mt-10 lg:flex-row mt-2 items-stretch justify-center gap-10 max-w-7xl">
+										{/* LEFT : IMAGE & INFO */}
+										<div className="ws-bg w-full max-w-[380px] min-h-[500px] flex flex-col items-center m-4 mx-10 justify-center text-center">
+											{/* Content Wrapper: Controls width so text stays inside the scroll gold borders */}
+											<div className="w-[70%] flex flex-col gap-4">
 
-											<div className="space-y-2 ">
-												<img
-											src={eve.image}
-											alt={eve.title}
-											className=" rounded-xl object-cover shadow-md aspect-video"
-											loading="lazy"
-										/>
-												<p className="text-white italic text-xs">
-													{eve.description}
-												</p>
+												<div className="space-y-2 ">
+													<img
+														src={eve.image}
+														alt={eve.title}
+														className=" rounded-xl object-cover shadow-md aspect-video"
+														loading="lazy"
+													/>
+													<p className="text-white italic text-xs">
+														{eve.description}
+													</p>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							</div>)
-					})}
-</div>
+								</div>)
+						})}
+					</div>
 				</> :
 				<>
-			<h1 className="text-6xl font-serif text-white font-bold text-center pt-10">
-				WORKSHOPS
-			</h1>
+					<h1 className="text-6xl font-arabian text-white font-bold text-center pt-10">
+						WORKSHOPS
+					</h1>
 					{Object.entries(workshopsData).map(([key, eve], index) => {
 						return (
-							<div className="flex justify-center px-6">
+							<div key={key} className="flex justify-center px-6">
 								{/* Added items-stretch to ensure both sides have similar height footprint */}
 								<div className="flex flex-col mt-10 lg:flex-row mt-2 items-stretch justify-center gap-10 max-w-7xl">
 									{/* LEFT : IMAGE & INFO */}
@@ -83,7 +83,7 @@ export default function Workshops() {
 									</div>
 
 									{/* RIGHT : THE SCROLL CARD */}
-									<div className="ws-bg w-130 h-145 flex flex-col items-center justify-center text-center">
+									<div className="ws-bg w-full max-w-[520px] min-h-[580px] flex flex-col items-center justify-center text-center">
 										{/* Content Wrapper: Controls width so text stays inside the scroll gold borders */}
 										<div className="w-[80%] md:w-[60%] lg:w-[50%] flex flex-col gap-4">
 

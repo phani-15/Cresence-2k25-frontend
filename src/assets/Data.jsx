@@ -425,9 +425,9 @@ export const timelineItems = [
 ];
 
 export const facultyMembers = [
-  { id: 1, name: "dr. P.Aruna Kumari", role: "Hod of cse", image: "/images/nari.jpeg" },
-  { id: 2, name: "mr. N venkatesh", role: "faculty Coordinator", image: "/images/phani.jpeg" },
-  { id: 3, name: "mr.r.d.d.v sivaram", role: "Coordinator", image: "/images/phani.jpeg" },
+  { id: 1, name: "dr. P.Aruna Kumari", role: "Hod of cse", image: "/images/persons/aruna_madam.jpeg" },
+  { id: 2, name: "mr. N venkatesh", role: "faculty Coordinator", image: "/images/persons/venkatesh_sir.jpeg" },
+  { id: 3, name: "mr.s.ashok", role: "faculty Coordinator", image: "/images/phani.jpeg" },
 ];
 export const teamMembers = [
   { id: 1, name: "p.pavan", role: "fest coordinator", image: "/images/phani.jpeg" },
@@ -439,9 +439,9 @@ export const teamMembers = [
   { id: 7, name: "m.manoj", role: "non-tech Coordinator", image: "/images/phani.jpeg" },
   { id: 8, name: "p.l. harshitha", role: "non-tech Coordinator", image: "/images/phani.jpeg" },
   { id: 9, name: "sk.thohid", role: "workshop head", image: "/images/phani.jpeg" },
-  { id: 10, name: "v.rahulu", role: "hospitality head", image: "/images/phani.jpeg" },
+  { id: 10, name: "r.d.prasad", role: "hospitality head", image: "/images/phani.jpeg" },
   { id: 11, name: "sharmila", role: "hospitality head", image: "/images/phani.jpeg" },
-  { id: 12, name: "p.p.m.d.s.rao", role: "web team lead", image: "/images/phani.jpeg" },
+  { id: 12, name: "p.p.d.m.s.rao", role: "web team lead", image: "/images/persons/phani.jpeg" },
   { id: 13, name: "k.k.abhishek", role: "3d designer", image: "/images/phani.jpeg" },
 ];
 
@@ -520,8 +520,8 @@ export const homecoods = [
     },
     {
         id: 9,
-        name: "v.rahulu",
-        role: "hospitality head",
+        name: "sh.thohid",
+        role: "workshop head",
         image: "/images/phani.jpeg",
         github: "https://github.com",
         linkedin: "https://linkedin.com",
@@ -529,7 +529,7 @@ export const homecoods = [
     },
     {
         id: 10,
-        name: "sharmila",
+        name: "r.durga prasad",
         role: "hospitality head",
         image: "/images/phani.jpeg",
         github: "https://github.com",
@@ -538,12 +538,13 @@ export const homecoods = [
     },
     {
         id: 11,
-        name: "sh.thohid",
-        role: "workshop head",
+        name: "sharmila",
+        role: "hospitality head",
         image: "/images/phani.jpeg",
         github: "https://github.com",
         linkedin: "https://linkedin.com",
         instagram: "https://instagram.com",
     },
+    
     // Add more members as needed
 ];

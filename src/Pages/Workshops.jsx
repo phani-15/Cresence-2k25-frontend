@@ -12,7 +12,6 @@ export default function Workshops() {
   return (
 
     <div className="work-bg">
-      <Navbar/>
       <div>
         <h1 className="text-6xl font-serif text-white font-bold text-center pt-10">
           WORKSHOPS
