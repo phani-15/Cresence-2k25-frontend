@@ -159,3 +159,23 @@
     transform-style: preserve-3d;
   }
 }
+
+.svg-path{
+  position: absolute;
+  top: 25svh;
+  left: 70%;
+  transform: translateX(-50%);
+  width: 10%;
+  height: 100%;
+  z-index: -1;
+}
+.svg-path svg{
+  width: 50%;
+  height: auto;
+}
+@media (max-width:1000px) {
+  .svg-path{
+    top: 15svh;
+    width: 275%;
+  }
+}

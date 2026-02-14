@@ -1,8 +1,9 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { TextAlignJustify, X } from "lucide-react";
+import { useTransition } from "../Context/TransitionContext";
 
 // Easing presets for consistent smooth animations
 const EASING = {
@@ -51,12 +52,26 @@ const Navbar = React.forwardRef((props, ref) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
 	const lastScrollY = useRef(0);
+	const localContainerRef = useRef();
 	const timeref = useRef();
 	const menuref = useRef();
 	const menuIconRef = useRef();
 	const navLinksRef = useRef([]); // Initialize for animating nav links
 	const navigate = useNavigate()
+	const loc = useLocation()
+	const { triggerTransition } = useTransition();
+
+	// Support forwarded ref
+	React.useImperativeHandle(ref, () => localContainerRef.current);
+
+	const handleNavigation = (to) => {
+		setMenuOpen(false); // Fix for navbar not closing
+		triggerTransition(to);
+	};
+
 	useGSAP(() => {
+		if (loc.pathname !== "/home" || !timeref.current) return;
+
 		gsap.from(".countdown-number",
 			{
 				y: 20,
@@ -73,13 +88,13 @@ const Navbar = React.forwardRef((props, ref) => {
 			opacity: 0,
 			y: 20,
 			scrollTrigger: {
-				trigger: "body",
+				trigger: document.body,
 				start: "top top",
 				end: "200 top", // Disappear after 200px of scroll
 				scrub: true,
 			}
 		});
-	}, { scope: timeref });
+	}, { scope: localContainerRef, dependencies: [loc.pathname] });
 	// This hook only runs when menuOpen changes
 	useGSAP(() => {
 		const validNavLinks = navLinksRef.current.filter(el => el !== null);
@@ -137,7 +152,7 @@ const Navbar = React.forwardRef((props, ref) => {
 					pointerEvents: "none", // Prevent accidental clicks when closed
 				}, 0.15);
 		}
-	}, [menuOpen]); // Only runs when menu toggles
+	}, { scope: localContainerRef, dependencies: [menuOpen] }); // Only runs when menu toggles
 
 	// Update countdown every second
 	useEffect(() => {
@@ -160,33 +175,35 @@ const Navbar = React.forwardRef((props, ref) => {
 
 	return (
 		<>
-			<div ref={ref} className="fixed top-0 left-0 right-0 z-50 flex flex-row pointer-events-none">
+			<div ref={localContainerRef} className="fixed  top-0 left-0 right-0 z-50 flex flex-row pointer-events-none">
 				<img
-					onClick={() => navigate('/')}
-					src="/images/logo.png" alt="" className="absolute cursor-pointer border border-gray-200 rounded-full p-0.5 top-0 right-0 left-0 h-[9vh] ml-10 mt-10 pointer-events-auto" />
+					onClick={() => navigate('/home')}
+					src="/images/logo.png" alt="" className="absolute cursor-pointer border border-gray-200 rounded-full p-0.5 top-0 right-0 left-0 h-[5vh] ml-10 mt-5 pointer-events-auto" />
 				{/* timebar with blur */}
-				<div>
-					<div
-						ref={timeref}
-						className="hidden fixed bottom-10 left-1/2 -translate-x-1/2 border border-white/20 rounded-4xl lg:flex text-center py-2 px-8 items-center bg-black/60 backdrop-blur-md z-10 pointer-events-auto"
-					>
-						<div className="font-arabian text-white flex justify-center space-x-4">
-							{[
-								{ value: timeLeft.days, label: "Days" },
-								{ value: timeLeft.hours, label: "Hours" },
-								{ value: timeLeft.minutes, label: "Minutes" },
-								{ value: timeLeft.seconds, label: "Seconds" },
-							].map((item, idx) => (
-								<div key={item.label} className="overflow-hidden text-center">
-									<span className=" block">{item.value}</span> {/* Add class here */}
-									<p className="text-xs countdown-number opacity-100">
-										{item.label}
-									</p>
-								</div>
-							))}
+				{loc.pathname == "/home" &&
+					<div>
+						<div
+							ref={timeref}
+							className="hidden fixed bottom-10 left-1/2 -translate-x-1/2 border border-white/20 rounded-4xl lg:flex text-center py-2 px-8 items-center bg-black/60 backdrop-blur-md z-10 pointer-events-auto"
+						>
+							<div className="font-arabian text-white flex justify-center space-x-4">
+								{[
+									{ value: timeLeft.days, label: "Days" },
+									{ value: timeLeft.hours, label: "Hours" },
+									{ value: timeLeft.minutes, label: "Minutes" },
+									{ value: timeLeft.seconds, label: "Seconds" },
+								].map((item, idx) => (
+									<div key={item.label} className="overflow-hidden text-center">
+										<span className=" block">{item.value}</span> {/* Add class here */}
+										<p className="text-xs countdown-number opacity-100">
+											{item.label}
+										</p>
+									</div>
+								))}
+							</div>
 						</div>
-					</div>
-				</div>
+					</div>}
+
 				{/* Menu/Cross icon with smooth rotation animation */}
 				<div
 					ref={menuIconRef}
@@ -203,7 +220,7 @@ const Navbar = React.forwardRef((props, ref) => {
 				{/* Animated menubar - GSAP controls all transforms */}
 				<div
 					ref={menuref}
-					className="w-[50vh] min-h-screen absolute top-0 right-0 border border-white/20 bg-black/60 backdrop-blur-xl z-20 overflow-y-auto pointer-events-auto"
+					className="w-[50vh] min-h-screen  overflow-x-hidden absolute top-0 right-0 border border-white/20 bg-black/60 backdrop-blur-xl z-20 overflow-y-auto pointer-events-auto"
 					style={{
 						transform: "translateX(100px)",
 						opacity: 0,
@@ -211,7 +228,7 @@ const Navbar = React.forwardRef((props, ref) => {
 					}}
 				>
 					<div className="w-full flex ml-2 lg:h-20 font-medium ">
-						<div className="items-start mt-20 pl-3 flex flex-col justify-evenly ">
+						<div className="items-start  mt-20 pl-3 flex flex-col justify-evenly ">
 							<h1
 								className="menu-title flex font-arabian flex-col items-start justify-between text-3xl lg:text-5xl py-3 text-white"
 								style={{
@@ -231,7 +248,11 @@ const Navbar = React.forwardRef((props, ref) => {
 									{ to: "/ourteam", label: "our team" },
 									{ to: "/sponsers", label: "sponsers" },
 								].map((item, idx) => (
-									<AnimatedNavLink to={item.to} key={item.to}>
+									<div
+										key={item.to}
+										onClick={() => handleNavigation(item.to)}
+										className="cursor-pointer pointer-events-auto"
+									>
 										<h3
 											ref={el => {
 												if (el && !navLinksRef.current.includes(el)) {
@@ -250,7 +271,7 @@ const Navbar = React.forwardRef((props, ref) => {
 												</span>
 											))}
 										</h3>
-									</AnimatedNavLink>
+									</div>
 								))}
 							</div>
 						</div>

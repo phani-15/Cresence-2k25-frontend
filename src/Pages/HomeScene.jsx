@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import Navbar from "../Components/Navbar";
 import Ourteamforhome from "../Components/Ourteamforhome";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -7,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
 import WorkShopsComponent from '../Components/WorkShopsComponent'
 import TechEventDeck from "../Components/TechnicalEves";
-import { technicalEventsData } from "../assets/Data";
+import { nonTechnicalEventsData, technicalEventsData } from "../assets/Data";
 // import ArabianRoyalDeck from "../Components/ArabianRoyalDeck";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,33 +14,24 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HomeScene() {
   const containerRef = useRef(null);
   const imgRef = useRef(null);
-  const navbarref = useRef(null);
   const overlayRef = useRef(null);
   const scrollContentRef = useRef(null);
   const [animationDone, setAnimationDone] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-
-  // ─── SCROLL LOCK during animation ────────────────────────────────────────
-  // Lock must go on document.body — overflow:hidden on a child div does NOT
-  // stop the browser's native scroll on the root. We also preserve the
-  // scrollbar width to prevent layout shift (content jitter) when locking.
   useEffect(() => {
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
     document.body.style.overflow = "hidden";
     document.body.style.paddingRight = `${scrollbarWidth}px`;
-
-    // Cleanup: if component unmounts before animation finishes, restore scroll.
     return () => {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
     };
-  }, []); // runs once on mount — lock is immediate
+  }, []);
 
   useGSAP(() => {
     const tl = gsap.timeline({
       onComplete: () => {
-        // Unlock scroll only after animation fully finishes
         document.body.style.overflow = "";
         document.body.style.paddingRight = "";
         setAnimationDone(true);
@@ -74,7 +64,6 @@ export default function HomeScene() {
         "start"
       )
       .add("end")
-      .from(navbarref.current, { opacity: 0, duration: 1 }, "end")
       .from(
         "h1 span",
         {
@@ -95,20 +84,11 @@ export default function HomeScene() {
   }, { scope: containerRef });
 
   return (
-    /*
-      No overflow-y on this wrapper.
-      Reason: overflow-y:auto/hidden on a non-root div creates a new scroll
-      container. That breaks position:fixed on the ::before pseudo-element
-      (the parallax bg) because fixed elements are positioned relative to the
-      nearest scroll container, NOT the viewport. Removing overflow-y here lets
-      position:fixed work correctly, and scroll locking is handled via body.
-    */
     <div
       ref={containerRef}
       id="main"
-      className={`relative ${
-        animationDone ? "night-bg-mobile md:night-bg" : "bg-black"
-      } min-w-screen overflow-x-hidden`}
+      className={`relative ${animationDone ? "night-bg-mobile md:night-bg" : "bg-black"
+        } w-full overflow-x-hidden`}
     >
       {/*
         HERO VIEWPORT SECTION
@@ -116,7 +96,7 @@ export default function HomeScene() {
         Exactly one viewport tall. Contains the mask animation target and overlay.
         position:relative + z-index:0 so it sits above the fixed ::before bg.
       */}
-      <div className="w-screen h-screen relative z-0 flex flex-col items-center justify-center">
+      <div className="w-full h-screen relative z-0 flex flex-col items-center justify-center">
 
         {/* Mask reveal target — must stay childless, CSS mask clips all children */}
         <div
@@ -124,8 +104,6 @@ export default function HomeScene() {
           className={`mask-img ${animationDone ? "bg-transparent" : "night-bg-mobile md:night-bg"
             } absolute inset-0 w-full h-full`}
         />
-
-        {/* Lamp overlay — fades out in sync with mask expansion */}
         <div
           ref={overlayRef}
           className="absolute inset-0 pointer-events-none z-10"
@@ -134,8 +112,6 @@ export default function HomeScene() {
             backgroundRepeat: "no-repeat",
           }}
         />
-
-        {/* Hero text (mobile only) */}
         <h1 className="text-white absolute top-0 right-0 md:hidden text-[7vh] mt-80 mr-10 font-arabian z-20">
           {"cresence".split("").map((char, i) => (
             <span key={i} className="inline-block">
@@ -147,12 +123,6 @@ export default function HomeScene() {
           2k26
         </p>
       </div>
-
-      {/* ── SCROLL CONTENT ────────────────────────────────────────────────── */}
-      {/*
-        Starts invisible (autoAlpha:0). GSAP reveals it after animation ends.
-        Components here must have transparent backgrounds for parallax to work.
-      */}
       <div
         ref={scrollContentRef}
         className="relative z-10"
@@ -161,14 +131,11 @@ export default function HomeScene() {
         <WorkShopsComponent />
         {/* <ArabianRoyalDeck /> */}
         {/* <Ourteam /> */}
-        <TechEventDeck events={technicalEventsData}/>
+        <TechEventDeck events={technicalEventsData} name={"technical events"}/>
+        <TechEventDeck events={nonTechnicalEventsData} name={"non-technical events"} />
         {/* Add more sections here — keep their backgrounds transparent */}
         <Ourteamforhome />
-        {/* Add more sections here — transparent backgrounds only */}
       </div>
-
-      {/* Navbar — always on top */}
-      <Navbar ref={navbarref} />
     </div>
   );
 }
